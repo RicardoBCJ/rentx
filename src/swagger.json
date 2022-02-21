@@ -1,0 +1,83 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "RentalX Documentation",
+        "description": "This is an API Rent",
+        "version": "1.0.0",
+        "contact":{
+            "email":"ricardoempessoal@gmail.com"
+        }
+    },
+    "paths":{
+        "/categories":{
+            "post": {
+                "tags":["Category"],
+                "summary": "Create a category of car",
+                "description": "Create a new category",
+                "requestBody":{
+                    "content": {
+                    "application/json":{
+                        "schema":{
+                            "type":"object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description":{
+                                    "type": "string"
+                                }
+                            },
+                            "example":{
+                                "name":"Category name sample - Hatchback",
+                                "description": "Category description sample - A hatchback is a car body configuration with a rear door that swings upward to provide access to a cargo area. Hatchbacks may feature fold-down second row seating, where the interior can be reconfigured to prioritize passenger or cargo volume"
+                            }
+                        }
+                    }
+                  }
+                },
+                "responses":{
+                    "201":{
+                        "description": "Created"
+                    },
+                    "500":{
+                        "description": "Category already exists"
+                    }
+                }
+            },
+            "get":{
+                "tags":["Category"],
+                "summary": "Get categories",
+                "description": "List all available categories",
+                "responses": {
+                    "200":{
+                        "description": "success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id": {
+                                                "type":"string"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "description": {
+                                                "type":"string"
+                                            },
+                                            "created_at": {
+                                                "type": "Date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
